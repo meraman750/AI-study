@@ -1,5 +1,5 @@
 ## Frontend Folder Structure
-
+```
 frontend/
 ├── public/
 │   ├── index.html            # Main HTML file
@@ -14,3 +14,4 @@ frontend/
 │
 ├── package.json              # Frontend dependencies and scripts
 └── node_modules/             # Installed dependencies (generated after npm install)
+```
