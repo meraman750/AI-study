@@ -65,14 +65,12 @@ class QuizAttempt(models.Model):
 
     attempted_at = models.DateTimeField(auto_now_add=True)
 
-class Progress(models.Model):
-    user = models.ForeignKey(
-        User,
-        on_delete=models.CASCADE
-    )
 
-    subject = models.ForeignKey(Subject,on_delete=models.CASCADE)
+class Progress(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    subject = models.CharField(max_length=100)
     quizzes_taken = models.IntegerField(default=0)
     average_score = models.FloatField(default=0)
-    last_updated = models.DateTimeField(auto_now=True)
 
+    def __str__(self):
+        return f"{self.user.username} - {self.subject}"
