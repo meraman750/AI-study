@@ -9,4 +9,5 @@ urlpatterns = [
     path('me/', get_me),
     path('password-reset/', password_reset),
     path('password-reset-confirm/', password_reset_confirm),
+    
 ]

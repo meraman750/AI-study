@@ -84,3 +84,4 @@ def password_reset_confirm(request):
         return Response({"message": "Password reset successful"})
     
     return Response({"error": "Invalid token"})
+    
