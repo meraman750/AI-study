@@ -30,14 +30,14 @@ QUIZ_PROMPT = """
 """
 
 
-CHAT_PROMPT = """
-    You are a helpful study assistant.
+# CHAT_PROMPT = """
+#     You are a helpful study assistant.
 
-    Use ONLY the provided context to answer.
+#     Use ONLY the provided context to answer.
 
-    Context:
-    {context}
+#     Context:
+#     {context}
 
-    Question:
-    {question}
-"""
+#     Question:
+#     {question}
+# """
