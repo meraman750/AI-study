@@ -1,6 +1,6 @@
 from openai import OpenAI
 from django.conf import settings
-from .prompts import SUMMARY_PROMPT, QUIZ_PROMPT, CHAT_PROMPT
+from .prompts import SUMMARY_PROMPT, QUIZ_PROMPT
 import json
 import re
 
@@ -25,7 +25,7 @@ class AIService:
             model=MODEL_NAME,
             messages=messages,
             temperature=0.7,
-            max_tokens=1000,
+            max_tokens=1500,
             stream=stream,
         )
 
@@ -69,6 +69,26 @@ class AIService:
         except json.JSONDecodeError:
             return {"error": "Invalid JSON from AI", "raw": cleaned}
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     # CHAT
     # @staticmethod
     # def chat(question, context):

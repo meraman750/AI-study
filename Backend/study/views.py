@@ -4,7 +4,7 @@ from .ai.ai_service import AIService
 from .models import StudyMaterial, Summary
 import json
 from .models import Quiz, Question
-from .ai.utils import chunk_text
+# from .ai.utils import chunk_text
 
 
 from rest_framework.views import APIView
