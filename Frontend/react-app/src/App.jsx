@@ -1,136 +1,39 @@
-import React, { useState } from "react";
-import './App.css'
+import React from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
-export default function AISummaryPage() {
+// Components
+import Login from "./component/Login";
+import ProgressCard from "./component/ProgressCard";
+import SummaryPage from "./component/SummaryPage";
+import QuizGenerator from "./component/QuizGenerator";
+import Dashboard from "./component/Dashboard";
 
-  const [file, setFile] = useState(null);
-  const [textInput, setTextInput] = useState("");
-  const [subject, setSubject] = useState("");
-  const [summary, setSummary] = useState("");
-  const [loading, setLoading] = useState(false);
-
-  // Handle file selection
-  const handleFileChange = (e) => {
-    setFile(e.target.files[0]);
-  };
-
-  // Handle text input
-  const handleTextChange = (e) => {
-    setTextInput(e.target.value);
-  };
-
-  // Handle subject change
-  const handleSubjectChange = (e) => {
-    setSubject(e.target.value);
-  };
-
-  // Handle Generate Summary (frontend only)
-  const handleGenerateSummary = () => {
-
-    if (!file && !textInput) {
-      alert("Please upload a file or enter text.");
-      return;
-    }
-
-    if (!subject) {
-      alert("Please select a subject.");
-      return;
-    }
-
-    setLoading(true);
-
-    // Simulated summary response (for frontend testing)
-    setTimeout(() => {
-
-      setSummary(
-        "This is a sample AI-generated summary.\n\n" +
-        "Once backend is connected, the real summary will appear here."
-      );
-
-      setLoading(false);
-
-    }, 2000);
-  };
-
+export default function App() {
   return (
-    <div className="container">
+    <Router>
+      {/* Navigation */}
+      <nav className="bg-green-500 p-4 text-gray-200 flex justify-center space-x-6">
+        <Link to="/login" className="hover:text-white">Login</Link>
+        <Link to="/dashboard" className="hover:text-white">Dashboard</Link>
+        <Link to="/summary" className="hover:text-white">AI Summary</Link>
+        <Link to="/quiz" className="hover:text-white">Quiz Generator</Link>
+      </nav>
 
-      <h1 className="title">
-        📚 AI Study Summary Generator
-      </h1>
+      {/* Routes */}
+      <Routes>
+        {/* Pair 1 */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/quiz" element={<QuizGenerator />} />
 
-      {/* Upload Card */}
-      <div className="card">
+        {/* Pair 2 */}
+        <Route path="/dashboard" element={<Dashboard />} />
 
-        <h2>Upload Study Material</h2>
+        {/* Pair 3 */}
+        <Route path="/summary" element={<SummaryPage />} />
 
-        {/* Subject Dropdown */}
-        <select
-          value={subject}
-          onChange={handleSubjectChange}
-          className="dropdown"
-        >
-          <option value="">
-            Select Subject
-          </option>
-
-          <option>Mathematics</option>
-          <option>Computer Science</option>
-          <option>Database Systems</option>
-          <option>Programming</option>
-          <option>Networking</option>
-
-        </select>
-
-        {/* File Upload */}
-        <input
-          type="file"
-          accept=".pdf,.txt,.docx"
-          onChange={handleFileChange}
-          className="fileInput"
-        />
-
-        <p className="orText">OR</p>
-
-        {/* Text Input */}
-        <textarea
-          placeholder="Paste your study material here..."
-          value={textInput}
-          onChange={handleTextChange}
-          className="textarea"
-        />
-
-        {/* Button */}
-        <button
-          onClick={handleGenerateSummary}
-          className="button"
-        >
-
-          {loading
-            ? "Generating Summary..."
-            : "Generate Summary"}
-
-        </button>
-
-      </div>
-
-      {/* Summary Section */}
-      {summary && (
-
-        <div className="card">
-
-          <h2>
-            🧠 AI Generated Summary
-          </h2>
-
-          <div className="summaryBox">
-            {summary}
-          </div>
-
-        </div>
-
-      )}
-
-    </div>
+        {/* Default route */}
+        <Route path="*" element={<Dashboard />} />
+      </Routes>
+    </Router>
   );
 }
